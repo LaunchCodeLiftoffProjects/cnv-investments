@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("summary")
-public class SummaryInvestorController {
+@RequestMapping("investors")
+
+public class InvestorController {
 
     @GetMapping
-    public String displaySummaryPage() {
-
-        return "investor-summary-page";
+    public String InvestorPage () {
+        return "investor-portfolio-page";
     }
 }
