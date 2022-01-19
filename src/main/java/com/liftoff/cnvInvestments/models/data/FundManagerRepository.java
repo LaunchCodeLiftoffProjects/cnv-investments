@@ -1,4 +1,4 @@
 package com.liftoff.cnvInvestments.models.data;
 
-public interface SummaryInvestorRepository {
+public interface FundManagerRepository {
 }
