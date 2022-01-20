@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Investor extends AbstractEntity{
+public class User extends AbstractEntity{
 
     @NotNull
     private String username;
@@ -16,12 +16,12 @@ public class Investor extends AbstractEntity{
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public Investor(String username, String password) {
+    public User() {}
+
+    public User(String username, String password) {
         this.username = username;
         this.pwHash = encoder.encode(password);
     }
-
-    public Investor () {}
 
     public String getUsername() {
         return username;
@@ -30,6 +30,4 @@ public class Investor extends AbstractEntity{
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
-
-
 }
