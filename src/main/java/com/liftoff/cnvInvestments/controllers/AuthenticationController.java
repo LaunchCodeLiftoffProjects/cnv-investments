@@ -47,7 +47,6 @@ public class AuthenticationController {
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
-        model.addAttribute("title", "Register");
         return "register-page";
     }
 
@@ -57,7 +56,6 @@ public class AuthenticationController {
                                           Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Register");
             return "register-page";
         }
 
@@ -65,7 +63,6 @@ public class AuthenticationController {
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-            model.addAttribute("title", "Register");
             return "register-page";
         }
 
@@ -73,7 +70,6 @@ public class AuthenticationController {
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            model.addAttribute("title", "Register");
             return "register-page";
         }
 
@@ -81,13 +77,12 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
-        model.addAttribute("title", "Log In");
         return "login-page";
     }
 
@@ -97,7 +92,6 @@ public class AuthenticationController {
                                    Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Log In");
             return "login-page";
         }
 
@@ -105,7 +99,6 @@ public class AuthenticationController {
 
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
-            model.addAttribute("title", "Log In");
             return "login-page";
         }
 
@@ -113,13 +106,12 @@ public class AuthenticationController {
 
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
-            model.addAttribute("title", "Log In");
             return "login-page";
         }
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:";
+        return "redirect:/summary";
     }
 
     @GetMapping("/logout")
