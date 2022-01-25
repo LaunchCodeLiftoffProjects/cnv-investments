@@ -1,6 +1,6 @@
 package com.liftoff.cnvInvestments.controllers;
 
-import com.liftoff.cnvInvestments.data.UserRepository;
+import com.liftoff.cnvInvestments.models.data.UserRepository;
 import com.liftoff.cnvInvestments.models.User;
 import com.liftoff.cnvInvestments.models.dto.LoginFormDTO;
 import com.liftoff.cnvInvestments.models.dto.RegisterFormDTO;

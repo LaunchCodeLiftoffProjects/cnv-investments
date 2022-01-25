@@ -1,7 +1,7 @@
 package com.liftoff.cnvInvestments;
 
 import com.liftoff.cnvInvestments.controllers.AuthenticationController;
-import com.liftoff.cnvInvestments.data.UserRepository;
+import com.liftoff.cnvInvestments.models.data.UserRepository;
 import com.liftoff.cnvInvestments.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

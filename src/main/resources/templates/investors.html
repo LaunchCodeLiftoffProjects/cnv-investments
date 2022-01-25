@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+
+<body>
+
+<div class="container body-content">
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2 class = "centered">Investors</h2>
+</div>
+
+<table class="centeredTable">
+    <tr>
+        <th:block th:each="column : ${columns}">
+            <th th:text = "${column.value}"></th>
+        </th:block>
+    </tr>
+</table>
+
+</body>
+</html>
