@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <header th:replace="fragments :: header"></header>
 </head>
 <body>
 
+<div class="container mt-3">
+    <h2>CNV Investments</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th>Security<th>
+            <th>Transaction Date</th>
+            <th>Number of Shares<th>
+            <th>Average Cost Price<th>
+            <th>Invested Capital</th>
+        </tr>
+        </thead>
+    </table>
+</div>
 </body>
 </html>
