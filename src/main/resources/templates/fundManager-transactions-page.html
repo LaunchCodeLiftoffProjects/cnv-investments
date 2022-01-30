@@ -11,12 +11,14 @@
             <p></p>
             <p><a class="nav-link" th:href="@{/summary}">Portfolio</a></p>
             <p>Transactions</p>
+            <p><a class="nav-link" th:href="@{/add}">Add Transaction</a></p>
             <p><a class="nav-link" th:href="@{/logout}">Logout</a></p>
         </div>
         <div class="col-sm-6">
             <table class="table table-dark table-hover">
                 <thead>
                 <tr>
+                    <th>User</th>
                     <th>Security</th>
                     <th>Transaction Date</th>
                     <th># of Shares</th>
@@ -26,6 +28,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.user.username}"></td>
                     <td th:text="${transaction.security.securityName}"></td>
                     <td th:text="${transaction.date}"></td>
                     <td th:text="${transaction.shares}"></td>

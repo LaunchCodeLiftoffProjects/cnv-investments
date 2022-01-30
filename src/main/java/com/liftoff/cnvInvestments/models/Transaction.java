@@ -6,11 +6,15 @@ import java.util.*;
 @Entity
 public class Transaction extends AbstractEntity {
 
+    // linking each transaction to one investor
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
 
-    private String security;
+    @OneToOne
+    @JoinColumn(name="security_id")
+    private Security security;
+
     private Date date;
     private int shares;
     private int cost;
@@ -18,10 +22,10 @@ public class Transaction extends AbstractEntity {
 
     public Transaction() {};
 
-    public Transaction(User aUser, String securityName, Date aDate, int numberOfShares, int cost) {
+    public Transaction(User aUser, Security aSecurity, Date aDate, int numberOfShares, int cost) {
         super();
         this.user = aUser;
-        this.security = securityName;
+        this.security = aSecurity;
         this.date = aDate;
         this.shares = numberOfShares;
         this.cost = cost;
@@ -37,11 +41,11 @@ public class Transaction extends AbstractEntity {
         this.user = user;
     }
 
-    public String getSecurity() {
+    public Security getSecurity() {
         return security;
     }
 
-    public void setSecurity(String security) {
+    public void setSecurity(Security security) {
         this.security = security;
     }
 

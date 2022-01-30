@@ -1,23 +1,17 @@
-package com.liftoff.cnvInvestments.models;
+package com.liftoff.cnvInvestments.models.dto;
 
-import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Security extends AbstractEntity{
+public class SecurityDTO {
 
     @NotNull
+    @NotBlank
     private String securityName;
 
     @NotNull
+    @NotBlank
     private String tickerCode;
-
-    public Security() {};
-
-    public Security(String aSecurity, String aTicker) {
-        this.securityName = aSecurity;
-        this.tickerCode = aTicker;
-    }
 
     public String getSecurityName() {
         return securityName;

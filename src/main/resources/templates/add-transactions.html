@@ -4,46 +4,43 @@
     <header th:replace="fragments :: header"></header>
 </head>
 <body>
-<h1>Add Transaction</h1>
-
-<form method="post" style="max-width:600px;">
-
+<h1 class ="container p-5 my-5">Add Transaction</h1>
+<form method="post" style="max-width:600px" class ="container p-5 my-5">
     <div class="form-group">
-        <label th:for="employer">User</label>
+        <label th:for="user">User</label>
         <select name="userId">
             <option th:each="user : ${users}"
                     th:text="${user.username}"
                     th:value="${user.id}"></option>
         </select>
-        <a th:href="@{'/users/add'}">Add Users</a>
+        <a th:href="@{'/register'}">Add User</a>
     </div>
-
     <div class="form-group">
-        <label th:for="user">Security</label>
-        <input class="form-control" th:field="${transaction.security}" />
-        <span th:errors="${transaction.security}" class="error"></span>
+        <label th:for="security">Security</label>
+        <select name="securityId">
+            <option th:each="security : ${securities}"
+                    th:text="${security.securityName}"
+                    th:value="${security.id}"></option>
+        </select>
+        <a th:href="@{'/add-security'}">Add Security</a>
     </div>
-
     <div class="form-group">
-        <label th:for="user">Date</label>
+        <label th:for="date">Date</label>
         <input class="form-control" th:field="${transaction.date}" />
         <span th:errors="${transaction.date}" class="error"></span>
     </div>
-
     <div class="form-group">
-        <label th:for="user"># of Shares</label>
+        <label th:for="shares"># of Shares</label>
         <input class="form-control" th:field="${transaction.shares}" />
         <span th:errors="${transaction.shares}" class="error"></span>
     </div>
-
     <div class="form-group">
-        <label th:for="user">Cost per share</label>
+        <label th:for="cost">Cost per share</label>
         <input class="form-control" th:field="${transaction.cost}" />
         <span th:errors="${transaction.cost}" class="error"></span>
     </div>
-
+    <p></p>
     <input type="submit" value="Add Transaction" />
 </form>
-
 </body>
 </html>
