@@ -112,7 +112,7 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:/summary";
+        return "redirect:/portfolio";
     }
 
     @GetMapping("/logout")
