@@ -49,7 +49,7 @@ public class PortfolioController {
         Iterable<Transaction> transactions;
         User loggedInUser = AuthenticationController.loggedInUser;
         transactions = TransactionData.findByUser(loggedInUser, transactionRepository.findAll());
-        model.addAttribute("title", "Transactions of " + columnChoices.get(loggedInUser));
+        model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
         model.addAttribute("transactions", transactions);
         return "investor-portfolio-page";
     }

@@ -62,15 +62,19 @@ public class HomeController {
         if (securityObj.isPresent()) {
             Security security = (Security) securityObj.get();
             newTransaction.setSecurity(security);
-            if (portfolioRepository.findBySecurity(security) != null) {
+            if (portfolioRepository.findBySecurity(security) == null) {
                 newPortfolio.setSecurity(security);
                 newPortfolio.setShares(newTransaction.getShares());
                 newPortfolio.setCost(newTransaction.getCost());
+                portfolioRepository.save(newPortfolio);
+            } else {
+                portfolioRepository.findBySecurity(security).setSecurity(security);
+                portfolioRepository.findBySecurity(security).setShares(newTransaction.getShares());
+                portfolioRepository.findBySecurity(security).setCost(newTransaction.getCost());
             }
         }
 
         transactionRepository.save(newTransaction);
-        portfolioRepository.save(newPortfolio);
 
         return "redirect:/transactions";
     }
