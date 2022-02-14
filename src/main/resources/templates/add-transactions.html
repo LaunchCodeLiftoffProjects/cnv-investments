@@ -34,8 +34,10 @@
         <a th:href="@{'/add-security'}">Add Security</a>
     </div>
     <div class="dropdown">
-        <label>Date: </label>
-        <input type="date">
+        <label th:for="date">Date: </label>
+        <input type="date" th:field="${transaction.date}" />
+<!--        <input class="form-control" th:field="${transaction.date}" />-->
+        <span th:errors="${transaction.date}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="shares"># of Shares</label>
