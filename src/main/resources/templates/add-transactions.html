@@ -2,6 +2,15 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
     <header th:replace="fragments :: header"></header>
+
+    <style>
+        body {
+            background: #3C3B3F;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #605C3C, #3C3B3F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+
 </head>
 <body>
 <h1 class ="container p-5 my-5">Add Transaction</h1>
@@ -24,10 +33,9 @@
         </select>
         <a th:href="@{'/add-security'}">Add Security</a>
     </div>
-    <div class="form-group">
-        <label th:for="date">Date</label>
-        <input class="form-control" th:field="${transaction.date}" />
-        <span th:errors="${transaction.date}" class="error"></span>
+    <div class="dropdown">
+        <label>Date: </label>
+        <input type="date">
     </div>
     <div class="form-group">
         <label th:for="shares"># of Shares</label>
@@ -35,7 +43,7 @@
         <span th:errors="${transaction.shares}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="cost">Cost per share</label>
+        <label th:for="cost">Cost Per Share</label>
         <input class="form-control" th:field="${transaction.cost}" />
         <span th:errors="${transaction.cost}" class="error"></span>
     </div>
