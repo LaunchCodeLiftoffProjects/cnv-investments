@@ -25,6 +25,8 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.security:spring-security-crypto'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'com.yahoofinance-api:YahooFinanceAPI:3.5.0'
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'

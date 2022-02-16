@@ -1,5 +1,6 @@
 package com.liftoff.cnvInvestments.controllers;
 
+
 import com.liftoff.cnvInvestments.data.PortfolioRepository;
 import com.liftoff.cnvInvestments.data.SecurityRepository;
 import com.liftoff.cnvInvestments.data.TransactionRepository;
@@ -10,11 +11,11 @@ import com.liftoff.cnvInvestments.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.HashMap;
+
 
 @Controller
 @RequestMapping("portfolio")
@@ -51,6 +52,8 @@ public class PortfolioController {
         transactions = TransactionData.findByUser(loggedInUser, transactionRepository.findAll());
         model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
         model.addAttribute("transactions", transactions);
+
+
         return "investor-portfolio-page";
     }
 

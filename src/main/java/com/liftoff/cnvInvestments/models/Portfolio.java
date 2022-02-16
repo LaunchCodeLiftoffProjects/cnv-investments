@@ -1,5 +1,6 @@
 package com.liftoff.cnvInvestments.models;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -68,4 +69,6 @@ public class Portfolio extends AbstractEntity {
     public void setCurrentPrice(int currentPrice) {
         this.currentPrice = currentPrice;
     }
+
+
 }
