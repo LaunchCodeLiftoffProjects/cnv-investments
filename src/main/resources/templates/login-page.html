@@ -2,6 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
     <header th:replace="fragments :: header"></header>
+
+    <style>
+        body {
+            background: #3C3B3F;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #605C3C, #3C3B3F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+
 </head>
 
 <body>
@@ -20,12 +29,10 @@
         <p class="error" th:errors="${loginFormDTO.password}"></p>
     </div>
     <div class="p-3 text-center">
-        <input type="submit" class="btn btn-primary text-center" value="Enter" />
+        <input type="submit" class="btn btn-outline-secondary text-center" value="Enter" />
     </div>
 
 </form>
-
-<p class="text-center">Don't have an account? <a href="/register">Register for one.</a></p>
 
 </body>
 </html>

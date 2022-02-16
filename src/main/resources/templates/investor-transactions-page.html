@@ -2,6 +2,15 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
     <header th:replace="fragments :: header"></header>
+
+    <style>
+        body {
+            background: #3C3B3F;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #605C3C, #3C3B3F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+
 </head>
 <body>
 
@@ -9,7 +18,7 @@
     <div class="row">
         <div class="col-sm-3">
             <p></p>
-            <p><a class="nav-link" th:href="@{/summary}">Portfolio</a></p>
+            <p><a class="nav-link" th:href="@{/portfolio}">Portfolio</a></p>
             <p>Transactions</p>
             <p><a class="nav-link" th:href="@{/logout}">Logout</a></p>
         </div>
@@ -25,19 +34,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Apple</td>
-                    <td>03/15/2021</td>
-                    <td>50</td>
-                    <td>100</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Microsoft</td>
-                    <td>03/16/2021</td>
-                    <td>10</td>
-                    <td>200</td>
-                    <td>2000</td>
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.security.securityName}"></td>
+                    <td th:text="${transaction.date}"></td>
+                    <td th:text="${transaction.shares}"></td>
+                    <td th:text="${transaction.cost}"></td>
+                    <td th:text="${transaction.cost * transaction.shares}"></td>
                 </tr>
                 </tbody>
             </table>

@@ -24,6 +24,7 @@ public class AuthenticationController {
     UserRepository userRepository;
 
     private static final String userSessionKey = "user";
+    public static User loggedInUser = null;
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -42,6 +43,7 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+        loggedInUser = user;
     }
 
     @GetMapping("/register")
@@ -60,7 +62,6 @@ public class AuthenticationController {
         }
 
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
-
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
             return "register-page";
@@ -111,7 +112,7 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:/summary";
+        return "redirect:/portfolio";
     }
 
     @GetMapping("/logout")

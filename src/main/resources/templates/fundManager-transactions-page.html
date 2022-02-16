@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-
 <head th:replace="fragments :: head">
     <header th:replace="fragments :: header"></header>
 
@@ -13,47 +12,37 @@
     </style>
 
 </head>
-
 <body>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
             <p></p>
-            <p>Portfolio</p>
-            <p><a class="nav-link" th:href="@{/transactions}">Transactions</a></p>
+            <p><a class="nav-link" th:href="@{/portfolio}">Portfolio</a></p>
+            <p>Transactions</p>
+            <p><a class="nav-link" th:href="@{/add}">Add Transaction</a></p>
             <p><a class="nav-link" th:href="@{/logout}">Logout</a></p>
         </div>
         <div class="col-sm-6">
             <table class="table table-dark table-hover">
                 <thead>
                 <tr>
+                    <th>User</th>
                     <th>Security</th>
+                    <th>Transaction Date</th>
                     <th># of Shares</th>
                     <th>Cost Price</th>
-                    <th>Current Price</th>
                     <th>Invested Capital</th>
-                    <th>Present Value</th>
-                    <th>Return</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.user.username}"></td>
                     <td th:text="${transaction.security.securityName}"></td>
+                    <td th:text="${transaction.date}"></td>
                     <td th:text="${transaction.shares}"></td>
                     <td th:text="${transaction.cost}"></td>
-                    <td></td>
                     <td th:text="${transaction.cost * transaction.shares}"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>7000</td>
-                    <td>11000</td>
-                    <td>4000/57%</td>
                 </tr>
                 </tbody>
             </table>
