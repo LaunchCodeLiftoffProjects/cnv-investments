@@ -19,6 +19,8 @@ public class Transaction extends AbstractEntity {
     private int shares;
     private int cost;
 
+//    private int cost = costPrice * shares;
+
 
     public Transaction() {};
 
@@ -64,6 +66,14 @@ public class Transaction extends AbstractEntity {
     public void setShares(int shares) {
         this.shares = shares;
     }
+
+//    public int getCostPrice() {
+//        return costPrice;
+//    }
+//
+//    public void setCostPrice(int costPrice) {
+//        this.costPrice = costPrice;
+//    }
 
     public int getCost() {
         return cost;

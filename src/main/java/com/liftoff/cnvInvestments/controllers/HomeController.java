@@ -8,6 +8,7 @@ import com.liftoff.cnvInvestments.models.Portfolio;
 import com.liftoff.cnvInvestments.models.Security;
 import com.liftoff.cnvInvestments.models.Transaction;
 import com.liftoff.cnvInvestments.models.User;
+import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +45,6 @@ public class HomeController {
     @PostMapping("add")
     public String processAddTransactionForm(@ModelAttribute @Valid Transaction newTransaction, @ModelAttribute Portfolio newPortfolio,
                                     Errors errors, Model model, @RequestParam int userId, @RequestParam int securityId) {
-
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Transaction");
             model.addAttribute(new Transaction());
@@ -69,8 +69,10 @@ public class HomeController {
                 portfolioRepository.save(newPortfolio);
             } else {
                 portfolioRepository.findBySecurity(security).setSecurity(security);
-                portfolioRepository.findBySecurity(security).setShares(newTransaction.getShares());
-                portfolioRepository.findBySecurity(security).setCost(newTransaction.getCost());
+                int newShares = portfolioRepository.findBySecurity(security).getShares() + newTransaction.getShares();
+                portfolioRepository.findBySecurity(security).setShares(newShares);
+                int newCost = portfolioRepository.findBySecurity(security).getCost() + newTransaction.getCost();
+                portfolioRepository.findBySecurity(security).setCost(newCost);
             }
         }
 

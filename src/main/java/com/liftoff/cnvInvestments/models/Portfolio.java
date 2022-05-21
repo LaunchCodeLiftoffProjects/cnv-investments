@@ -14,8 +14,9 @@ public class Portfolio extends AbstractEntity {
     private Security security;
 
     private int shares;
-    private int cost;
+    //private int costPrice;
     private int currentPrice;
+    private int cost;
 
     public Portfolio() {};
 
@@ -24,7 +25,9 @@ public class Portfolio extends AbstractEntity {
         this.user = aUser;
         this.security = aSecurity;
         this.shares = numberOfShares;
+        //this.costPrice = costPrice;
         this.cost = cost;
+        //this.shares * this.costPrice;
         this.currentPrice = currentPrice;
     };
 
@@ -52,6 +55,14 @@ public class Portfolio extends AbstractEntity {
     public void setShares(int shares) {
         this.shares = shares;
     }
+
+//    public int getCostPrice() {
+//        return costPrice;
+//    }
+
+//    public void setCostPrice(int costPrice) {
+//        this.costPrice = costPrice;
+//    }
 
     public int getCost() {
         return cost;
