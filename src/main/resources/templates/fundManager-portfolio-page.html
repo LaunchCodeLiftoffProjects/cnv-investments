@@ -28,23 +28,23 @@
                 </tr>
                 </thead>
                 <tbody>
-<!--                <tr th:each="transaction : ${transactions}">-->
-<!--                    <td th:text="${transaction.security.securityName}"></td>-->
-<!--                    <td th:text="${transaction.shares}"></td>-->
-<!--                    <td th:text="${transaction.cost}"></td>-->
-<!--                    <td></td>-->
-<!--                    <td th:text="${transaction.shares * transaction.cost}"></td>-->
-<!--                    <td></td>-->
-<!--                    <td></td>-->
-<!--                </tr>-->
+                <tr th:each="portfolioEntry : ${portfolio}">
+                    <td th:text="${portfolioEntry.security.securityName}"></td>
+                    <td th:text="${portfolioEntry.shares}"></td>
+                    <td th:text="${portfolioEntry.cost}"></td>
+                    <td></td>
+                    <td th:text="${portfolioEntry.investedCap}"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>Total</td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>7000</td>
-                    <td>11000</td>
-                    <td>4000/57%</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

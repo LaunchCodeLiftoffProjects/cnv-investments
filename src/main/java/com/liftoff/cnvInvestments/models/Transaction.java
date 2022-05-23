@@ -17,20 +17,19 @@ public class Transaction extends AbstractEntity {
 
     private Date date;
     private int shares;
-    private int cost;
-
-//    private int cost = costPrice * shares;
-
+    private double cost;
+    private double investedCap;
 
     public Transaction() {};
 
-    public Transaction(User aUser, Security aSecurity, Date aDate, int numberOfShares, int cost) {
+    public Transaction(User aUser, Security aSecurity, Date aDate, int shares, double cost, double investedCap) {
         super();
         this.user = aUser;
         this.security = aSecurity;
         this.date = aDate;
-        this.shares = numberOfShares;
+        this.shares = shares;
         this.cost = cost;
+        this.investedCap = investedCap;
     };
 
     // Getters & Setters
@@ -67,20 +66,21 @@ public class Transaction extends AbstractEntity {
         this.shares = shares;
     }
 
-//    public int getCostPrice() {
-//        return costPrice;
-//    }
-//
-//    public void setCostPrice(int costPrice) {
-//        this.costPrice = costPrice;
-//    }
-
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
+
+    public double getInvestedCap() {
+        return investedCap;
+    }
+
+    public void setInvestedCap(double investedCap) {
+        this.investedCap = investedCap;
+    }
+
 
 }

@@ -14,20 +14,19 @@ public class Portfolio extends AbstractEntity {
     private Security security;
 
     private int shares;
-    //private int costPrice;
-    private int currentPrice;
-    private int cost;
+    private double investedCap;
+    private double cost;
+    private double currentPrice;
 
     public Portfolio() {};
 
-    public Portfolio(User aUser, Security aSecurity, int numberOfShares, int cost, int currentPrice) {
+    public Portfolio(User aUser, Security aSecurity, int shares, double investedCap, double cost, double currentPrice) {
         super();
         this.user = aUser;
         this.security = aSecurity;
-        this.shares = numberOfShares;
-        //this.costPrice = costPrice;
+        this.shares = shares;
+        this.investedCap = investedCap;
         this.cost = cost;
-        //this.shares * this.costPrice;
         this.currentPrice = currentPrice;
     };
 
@@ -56,27 +55,27 @@ public class Portfolio extends AbstractEntity {
         this.shares = shares;
     }
 
-//    public int getCostPrice() {
-//        return costPrice;
-//    }
-
-//    public void setCostPrice(int costPrice) {
-//        this.costPrice = costPrice;
-//    }
-
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 
-    public int getCurrentPrice() {
+    public double getInvestedCap() {
+        return investedCap;
+    }
+
+    public void setInvestedCap(double investedCap) {
+        this.investedCap = investedCap;
+    }
+
+    public double getCurrentPrice() {
         return currentPrice;
     }
 
-    public void setCurrentPrice(int currentPrice) {
+    public void setCurrentPrice(double currentPrice) {
         this.currentPrice = currentPrice;
     }
 }

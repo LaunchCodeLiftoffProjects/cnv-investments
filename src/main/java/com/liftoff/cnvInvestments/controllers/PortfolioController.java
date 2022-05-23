@@ -52,10 +52,20 @@ public class PortfolioController {
 
         ArrayList<Portfolio> portfolio;
         User loggedInUser = AuthenticationController.loggedInUser;
-        portfolio = PortfolioData.findByUser(loggedInUser, portfolioRepository.findAll());
-        model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
-        model.addAttribute("portfolio", portfolio);
-        return "investor-portfolio-page";
+
+        if (loggedInUser.getId() == 1) {
+            portfolio = PortfolioData.findByUser(loggedInUser, portfolioRepository.findAll());
+            model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
+            model.addAttribute("portfolio", portfolio);
+            return "fundManager-portfolio-page";
+        }
+        else {
+            portfolio = PortfolioData.findByUser(loggedInUser, portfolioRepository.findAll());
+            model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
+            model.addAttribute("portfolio", portfolio);
+            return "investor-portfolio-page";
+
+        }
 
 
 //        Iterable<Portfolio> portfolio;
