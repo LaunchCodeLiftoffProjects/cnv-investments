@@ -35,6 +35,7 @@ public class TransactionController {
         columnChoices.put("user", "User");
         columnChoices.put("security", "Security");
         columnChoices.put("date", "Date");
+        columnChoices.put("type", "Type");
         columnChoices.put("shares", "Shares");
         columnChoices.put("cost", "Cost");
         columnChoices.put("invested capital", "Invested Capital");

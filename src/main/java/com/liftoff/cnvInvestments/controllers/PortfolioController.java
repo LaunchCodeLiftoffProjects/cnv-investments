@@ -43,12 +43,6 @@ public class PortfolioController {
 
     @RequestMapping
     public String displayPortfolio(Model model) {
-//         Iterable<Transaction> transactions;
-//         User loggedInUser = AuthenticationController.loggedInUser;
-//         transactions = TransactionData.findByUser(loggedInUser, transactionRepository.findAll());
-//         model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
-//         model.addAttribute("transactions", transactions);
-//         return "investor-portfolio-page";
 
         ArrayList<Portfolio> portfolio;
         User loggedInUser = AuthenticationController.loggedInUser;
@@ -66,21 +60,6 @@ public class PortfolioController {
             return "investor-portfolio-page";
 
         }
-
-
-//        Iterable<Portfolio> portfolio;
-//        User loggedInUser = AuthenticationController.loggedInUser;
-//        if (loggedInUser.getId() == 1) {
-//            portfolio = portfolioRepository.findAll();
-//            model.addAttribute("title", "Portfolio");
-//            model.addAttribute("portfolio", portfolio);
-//            return "fundManager-portfolio-page";
-//        } else {
-//            portfolio = PortfolioData.findByUser(loggedInUser, portfolioRepository.findAll());
-//            model.addAttribute("title", "Portfolio of " + columnChoices.get(loggedInUser));
-//            model.addAttribute("portfolio", portfolio);
-//            return "investor-transactions-page";
-//        }
 
     }
 

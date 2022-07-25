@@ -16,17 +16,19 @@ public class Transaction extends AbstractEntity {
     private Security security;
 
     private Date date;
+    private String type;
     private int shares;
     private double cost;
     private double investedCap;
 
     public Transaction() {};
 
-    public Transaction(User aUser, Security aSecurity, Date aDate, int shares, double cost, double investedCap) {
+    public Transaction(User aUser, Security aSecurity, Date aDate, String aType, int shares, double cost, double investedCap) {
         super();
         this.user = aUser;
         this.security = aSecurity;
         this.date = aDate;
+        this.type = aType;
         this.shares = shares;
         this.cost = cost;
         this.investedCap = investedCap;
@@ -56,6 +58,14 @@ public class Transaction extends AbstractEntity {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getShares() {

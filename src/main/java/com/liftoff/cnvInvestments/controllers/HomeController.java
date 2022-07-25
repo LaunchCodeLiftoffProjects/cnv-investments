@@ -44,7 +44,7 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddTransactionForm(@ModelAttribute @Valid Transaction newTransaction, @ModelAttribute Portfolio newPortfolio,
-                                    Errors errors, Model model, @RequestParam int userId, @RequestParam int securityId) {
+                                    Errors errors, Model model, @RequestParam int userId, @RequestParam int securityId, @RequestParam String type) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Transaction");
             model.addAttribute(new Transaction());
@@ -58,17 +58,25 @@ public class HomeController {
             newPortfolio.setUser(user);
         }
 
+        newTransaction.setType(type);
+
+        userObj = userRepository.findById(1);
+        User user1 = (User) userObj.get();
+
         Optional securityObj = securityRepository.findById(securityId);
         if (securityObj.isPresent()) {
             Security security = (Security) securityObj.get();
             newTransaction.setSecurity(security);
             newTransaction.setInvestedCap(newTransaction.getShares() * newPortfolio.getCost());
 
+
             if (portfolioRepository.findBySecurity(security) == null) {
                 newPortfolio.setSecurity(security);
                 newPortfolio.setShares(newTransaction.getShares());
                 newPortfolio.setCost(newTransaction.getCost());
                 newPortfolio.setInvestedCap(newTransaction.getInvestedCap());
+                portfolioRepository.save(newPortfolio);
+                newPortfolio.setUser(user1);
                 portfolioRepository.save(newPortfolio);
             } else {
                 portfolioRepository.findBySecurity(security).setSecurity(security);

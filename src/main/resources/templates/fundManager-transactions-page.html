@@ -21,6 +21,7 @@
                     <th>User</th>
                     <th>Security</th>
                     <th>Transaction Date</th>
+                    <th>Transaction Type</th>
                     <th># of Shares</th>
                     <th>Cost Price</th>
                     <th>Invested Capital</th>
@@ -31,6 +32,7 @@
                     <td th:text="${transaction.user.username}"></td>
                     <td th:text="${transaction.security.securityName}"></td>
                     <td th:text="${transaction.date}"></td>
+                    <td th:text="${transaction.type}"></td>
                     <td th:text="${transaction.shares}"></td>
                     <td th:text="${transaction.cost}"></td>
                     <td th:text="${transaction.investedCap}"></td>
